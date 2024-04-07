@@ -6,7 +6,7 @@ import Navbar from "./components/home/Navbar";
 
 function App() {
   return (
-    <div className="App fredoka-font h-[100vh] overflow-hidden">
+    <div className="App fredoka-font   overflow-hidden">
 
 
 
