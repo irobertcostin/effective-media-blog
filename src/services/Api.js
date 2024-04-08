@@ -39,6 +39,7 @@ export default class Data {
 
             if (data.status === 200) {
                 let resp = await data.json();
+
                 return resp
             } else {
                 return "Something went wrong"
@@ -77,14 +78,30 @@ export default class Data {
     async filterCategories(categories, page) {
         try {
             let data = await this.api(`/posts/filter/categories?page=${page}`, "POST", categories)
+
             if (data.status === 201) {
+
                 let resp = await data.json();
+
                 return resp
             } else {
                 return "Something went wrong"
             }
         } catch (error) {
             console.log(error);
+        }
+    }
+
+
+
+    async search(string, page) {
+        try {
+            let data = await this.api(`/posts/search?searchFor=${string}&page=${page}`, "GET")
+            let resp = await data.json();
+
+            return resp
+        } catch (error) {
+
         }
     }
 
