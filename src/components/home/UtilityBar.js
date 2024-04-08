@@ -25,7 +25,7 @@ import { Pagination, ConfigProvider } from "antd"
 
 
 
-export default function UtilityBar({ readPost, currentPage, length, itemsPerPage, handleChangePage, handleSearch, handleCategories, categories }) {
+export default function UtilityBar({ searchOngoing, resetSearch, search, readPost, currentPage, length, itemsPerPage, handleChangePage, handleSearch, handleCategories, categories }) {
 
 
     const solutions = [
@@ -44,10 +44,10 @@ export default function UtilityBar({ readPost, currentPage, length, itemsPerPage
     // }, [categories]);
 
     return (
-        <div className={`${readPost !== null ? "hidden xl:hidden" : ""}  xl:flex w-full justify-start relative h-24 items-center z-50  xl:h-20`}>
+        <div className={`  xl:flex w-full justify-start relative h-24 items-center z-50  xl:h-20`}>
 
 
-            <div className="w-full   flex justify-center md:justify-center gap-3 max-w-[400px] ">
+            <div className={`${readPost !== null ? "hidden " : ""}  w-full flex justify-center md:justify-center gap-3 max-w-[400px] `}>
 
                 <Popover className="pt-1 pl-1 ">
                     <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-blue-700">
@@ -105,16 +105,19 @@ export default function UtilityBar({ readPost, currentPage, length, itemsPerPage
                             className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-fuchsia-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                             placeholder="Search"
                         />
-                        <div className="absolute right-2 top-2">
+                        <button onClick={resetSearch} className={`${searchOngoing == "" ? "hidden" : "block"}    absolute top-1 right-9 py-1.5 bg-rose-400 text-white text-xs px-1.5 rounded-md hover:bg-rose-300 ease-in-out duration-500`}>Reset</button>
+                        <button onClick={search} className="absolute right-1 rounded-md top-1 bg-sky-100 p-1">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="blue" className="w-5 h-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                             </svg>
-                        </div>
+                        </button>
+
                     </div>
+
                 </div>
             </div>
 
-            <div className=' flex justify-center py-3 '>
+            <div className={`${readPost !== null ? "hidden " : ""}  flex justify-center py-3 `}>
                 <ConfigProvider
                     theme={{
                         token: {

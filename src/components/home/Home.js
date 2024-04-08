@@ -25,10 +25,12 @@ export default function Home() {
     const [categories, setCategories] = useState([]);
     const [resetPage, setResetPage] = useState(false)
     const [page, setPage] = useState(POSTS)
-
     const itemsPerPage = 15
-
     const [readPost, setReadPost] = useState(null)
+    const [noFetch, setNoFetch] = useState(false)
+
+    const [searchOngoing, setSearchOngoing] = useState(false)
+
     const choosePost = (article) => {
         setReadPost(article)
     }
@@ -37,22 +39,23 @@ export default function Home() {
 
 
     const fetch = async (page) => {
+        setSearchOngoing(false)
+        setSearchString("")
+        setNoFetch(false)
         setLoading(true)
         let data = await service.getAllPosts(page);
-        if (data.length > 0) {
-            console.log(data);
-            setDisplayedItems(data)
-            let count = await service.getCount()
-            console.log(count);
-            setLength(count)
+        if (data) {
+            setDisplayedItems(data.posts)
+            setLength(data.count)
         }
         setLoading(false)
     }
 
 
     const handleCategories = (item) => {
-
-
+        setSearchOngoing(false)
+        setSearchString("")
+        setNoFetch(false)
         if (!categories.includes(item)) {
             const newArr = [...categories, item];
             if (currentPage !== 1) {
@@ -75,10 +78,10 @@ export default function Home() {
 
 
     const filterByCategory = async () => {
+
         setLoading(true)
         let searchQuery = { categories: categories }
         const data = await service.filterCategories(searchQuery, currentPage)
-        console.log(data);
         setLength(data.count)
         setDisplayedItems(data.posts)
         setLoading(false)
@@ -95,7 +98,40 @@ export default function Home() {
 
     const handleSearch = (e) => {
         e.preventDefault()
-        setSearchString(e.target.value.toLowerCase());
+        setSearchString(e.target.value.toLowerCase().trim());
+    }
+
+
+    const search = async () => {
+        setSearchOngoing(true)
+        setLoading(true)
+        setNoFetch(true)
+        setCategories([])
+        setLength(0)
+        setResetPage(true)
+    }
+
+    const resetSearch = () => {
+        setNoFetch(false)
+        document.getElementById("search-bar").value = ""
+        setSearchString("")
+
+        setResetPage(true);
+        setSearchOngoing(false)
+        if (currentPage === 1) {
+            fetch()
+        } else {
+            setCurrentPage(1)
+        }
+
+    }
+
+    const searchFunction = async (string, page) => {
+
+        const data = await service.search(string, page);
+        setDisplayedItems(data.posts)
+        setLength(data.count)
+        setLoading(false)
     }
 
 
@@ -118,36 +154,23 @@ export default function Home() {
         }
     }, [categories]);
 
+
     useEffect(() => {
+
+
         if (categories.length === 0) {
-            fetch(currentPage);
-        } else {
-            console.log(resetPage);
+            if (!noFetch) {
+                console.log("test");
+                fetch(currentPage);
+            } else if (noFetch && searchString !== "") {
+                searchFunction(searchString, currentPage)
+            }
+        }
+
+        else if (categories.length > 0) {
             filterByCategory();
         }
     }, [categories, currentPage]);
-
-
-    useEffect(() => {
-        if (displayedItems && displayedItems.length > 0) {
-            console.log(`Current page items: ${displayedItems.length}`);
-        }
-    }, [displayedItems])
-
-
-    useEffect(() => {
-        // if (searchString !== "") {
-
-        //     filterByString(posts, searchString)
-        // }
-        // else if (searchString == "") {
-        //     changeItemsPerPage(posts)
-        //     setLength(posts.length)
-        // }
-        console.log(searchString);
-
-    }, [searchString])
-
 
 
 
@@ -163,12 +186,12 @@ export default function Home() {
         <div className="w-full relative py-2 px-2">
 
 
-            <UtilityBar readPost={readPost} currentPage={currentPage} categories={categories} length={length} itemsPerPage={itemsPerPage} handleChangePage={handleChangePage} handleSearch={handleSearch} handleCategories={handleCategories} />
+            <UtilityBar searchOngoing={searchOngoing} resetSearch={resetSearch} search={search} readPost={readPost} currentPage={currentPage} categories={categories} length={length} itemsPerPage={itemsPerPage} handleChangePage={handleChangePage} handleSearch={handleSearch} handleCategories={handleCategories} />
 
 
             {
                 loading ?
-                    <div className="w-full   h-[40vh] flex justify-center items-center">
+                    <div className="w-full   h-[70vh] flex justify-center py-40">
                         <ClipLoader />
                     </div>
                     :
@@ -180,13 +203,13 @@ export default function Home() {
 
 
                                 case POSTS:
-                                    return <PostsSection displayedItems={displayedItems} choosePost={choosePost} />;
+                                    return <PostsSection fetch={fetch} displayedItems={displayedItems} choosePost={choosePost} setCategories={setCategories} />;
 
                                 case SINGLEPOST:
                                     return <ReadPost readPost={readPost} changePage={changePage} />
 
                                 default:
-                                    return <PostsSection displayedItems={displayedItems} choosePost={choosePost} />;
+                                    return <PostsSection fetch={fetch} displayedItems={displayedItems} choosePost={choosePost} setCategories={setCategories} />;
 
                             }
                         })()}
