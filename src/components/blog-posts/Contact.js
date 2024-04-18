@@ -14,9 +14,9 @@ export default function Contact() {
     };
 
     return (
-        <div className="text-white shadow-lg flex flex-col items-center justify-center gap-5 rounded-md overflow-hidden bg-gradient-to-t from-sky-500 to-blue-600 w-full   px-10 py-5">
+        <div className="text-white  shadow-lg flex flex-col items-center justify-center gap-5 rounded-md overflow-hidden bg-gradient-to-t from-sky-500 to-blue-600 w-full   px-10 py-5">
 
-            <p p className="w-full text-center text-2xl font-bold" > Contact our representative</p>
+            <p className="w-full text-center text-2xl font-bold" > Contact our representative</p>
 
             <div className='w-full flex flex-col gap-2 max-w-[250px] justify-center items-center '>
                 <button className='w-full bg-white py-1.5 px-10 hover:bg-opacity-90 text-blue-800 rounded-md text-lg'>

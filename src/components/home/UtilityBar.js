@@ -136,7 +136,6 @@ export default function UtilityBar({ searchString, searchOngoing, resetSearch, s
                         defaultCurrent={1}
                         current={currentPage}
                         total={length}
-                        hideOnSinglePage
                         onChange={handleChangePage}
                         pageSize={itemsPerPage}
                         size="small"
