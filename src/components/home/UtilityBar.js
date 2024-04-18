@@ -25,7 +25,7 @@ import { Pagination, ConfigProvider } from "antd"
 
 
 
-export default function UtilityBar({ searchOngoing, resetSearch, search, readPost, currentPage, length, itemsPerPage, handleChangePage, handleSearch, handleCategories, categories }) {
+export default function UtilityBar({ searchString, searchOngoing, resetSearch, search, readPost, currentPage, length, itemsPerPage, handleChangePage, handleSearch, handleCategories, categories }) {
 
 
     const solutions = [
@@ -106,7 +106,7 @@ export default function UtilityBar({ searchOngoing, resetSearch, search, readPos
                             placeholder="Search"
                         />
                         <button onClick={resetSearch} className={`${searchOngoing == "" ? "hidden" : "block"}    absolute top-1 right-9 py-1.5 bg-rose-400 text-white text-xs px-1.5 rounded-md hover:bg-rose-300 ease-in-out duration-500`}>Reset</button>
-                        <button onClick={search} className="absolute right-1 rounded-md top-1 bg-sky-100 p-1">
+                        <button onClick={search} className={`${searchString == "" ? "hidden" : "block"} absolute right-1 rounded-md top-1 bg-sky-100 p-1`}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="blue" className="w-5 h-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                             </svg>
