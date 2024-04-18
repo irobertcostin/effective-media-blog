@@ -7,7 +7,7 @@ export default function ShareFunction() {
 
 
     return (
-        <div className="w-full max-w-[430px] flex flex-col items-center gap-5 border-y py-5 border-blue-500 xl:border-y-0 xl:mb-14 xl:pt-0 ">
+        <div className="w-full max-w-[430px]  flex flex-col items-center gap-5 border-y py-5 border-blue-500 xl:border-y-4 xl:mb-[40px] xl:pt-0 ">
 
             <p className="text-2xl text-blue-700 xl:text-3xl xl:font-bold">Share this article</p>
 

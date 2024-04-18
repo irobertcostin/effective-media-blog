@@ -20,16 +20,16 @@ export default function Commercial() {
 
 
     return (
-        <div className="  text-white w-full rounded-md overflow-hidden bg-[#d3488d] max-w-[430px] shadow-lg xl:max-w-7xl xl:flex xl:flex-row-reverse xl:max-h-[400px] xl:mt-20">
+        <div className="  text-white w-full rounded-md overflow-hidden bg-[#d3488d] max-w-[430px] shadow-lg xl:max-w-7xl xl:flex xl:flex-row-reverse xl:max-h-[400px] xl:mt-20 relative">
 
-            <img className="w-full  xl:max-w-[400px]" src="https://res.cloudinary.com/dqvazcqdl/image/upload/v1712574333/blogimage_a6h8zx.jpg"></img>
+            <img className="w-full  xl:max-w-[600px]" src="https://res.cloudinary.com/dqvazcqdl/image/upload/v1712574333/blogimage_a6h8zx.jpg"></img>
 
 
-            <div className=" flex flex-col gap-3 px-10 py-10 font-bold  xl:my-auto xl:mx-auto">
-                <p className="text-xl leading-5 w-full xl:text-3xl">Elevate Your Digital Presence With Effective Expertise.</p>
+            <div className=" flex flex-col gap-3 px-10 py-10 font-bold  xl:my-auto xl:mx-auto xl:absolute xl:left-10 xl:w-[70%] xl:top-14">
+                <p className="text-xl leading-5 w-full xl:text-5xl text-center">Elevate Your Digital Presence With Effective Expertise.</p>
                 <button
                     onClick={handleEmailButtonClick}
-                    className="flex items-center  text-lg justify-center xl:text-2xl">
+                    className="flex items-center  text-lg justify-center xl:text-4xl">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"

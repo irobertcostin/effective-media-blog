@@ -32,18 +32,18 @@ export default function ReadPost({ changePage, readPost }) {
     }, [readPost])
 
     return (
-        <div className=" bg-transparent flex flex-col items-center min-h-[40vh] z-50 py-5  text-indigo-900 ">
+        <div className="  bg-transparent flex flex-col items-center min-h-[40vh] z-50 py-5  text-indigo-900 ">
             <ScrollToTop />
-            <div className="w-full relative  ">
+            <div className="w-full relative  z-50 ">
                 <button onClick={changePage} className=" -top-4 left-3 xl:top-0 text-black absolute flex items-center"><ArrowLeftCircleIcon color="#2563eb" className="w-8 h-8 sm:h-10 sm:w-10" /></button>
             </div>
 
 
-            <div className="w-full flex flex-col items-center xl:flex-row xl:items-start xl:justify-center xl:max-w-7xl relative ">
+            <div className="w-full   flex flex-col items-center xl:flex-row xl:items-start xl:justify-center xl:max-w-7xl relative xl:gap-5">
 
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 0 xl:mx-0" >
-                    <div className="max-w-3xl mx-auto ">
+                <div className="w-full max-w-7xl mx-auto px-4 sm:px-6  xl:px-0 xl:mx-0 " >
+                    <div className="max-w-4xl mx-auto  w-full">
 
                         <div className="py-8 xl:py-0">
                             <h1 className="text-3xl font-bold mb-2">{readPost.title}</h1>
@@ -67,7 +67,7 @@ export default function ReadPost({ changePage, readPost }) {
                     </div>
                 </div>
 
-                <div className="my-5 mt-20 flex flex-col items-center gap-5 w-full max-w-[430px] xl:mt-0  ">
+                <div className="my-5 mt-20 flex flex-col items-center gap-5 xl:gap-0 w-full max-w-[430px] xl:mt-0 ">
                     <ShareFunction />
                     <Contact />
                 </div>
@@ -75,7 +75,7 @@ export default function ReadPost({ changePage, readPost }) {
 
             </div>
 
-            <div className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto  flex-col gap-5 hidden xl:flex max-w-7xl xl:items-start  xl:pl-10">
+            <div className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto  flex-col gap-5 hidden xl:flex max-w-7xl xl:items-start  ">
                 <p>{readPost.description_1}</p>
                 <p>{readPost.description_2}</p>
                 <p>{readPost.description_3}</p>
@@ -83,7 +83,7 @@ export default function ReadPost({ changePage, readPost }) {
                 <p>{readPost.description_5}</p>
             </div>
 
-            <div className="w-full flex justify-center xl:px-20 xl:pl-36">
+            <div className="w-full flex justify-center  0 ">
                 <Commercial />
             </div>
         </div>
