@@ -35,7 +35,7 @@ export default class Data {
 
         try {
 
-            let data = await this.api(`/posts?page=${page}`, "GET")
+            let data = await this.api(`/posts/all?page=${page}`, "GET")
 
             if (data.status === 200) {
                 let resp = await data.json();
