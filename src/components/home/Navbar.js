@@ -1,5 +1,4 @@
 import logo from "../../images/logo.webp"
-import niceform from "../../images/3dform.webp"
 import facebook from "../../images/facebook.webp"
 import instagram from "../../images/insta.webp"
 import { HomeIcon } from '@heroicons/react/20/solid'
@@ -18,23 +17,17 @@ export default function Navbar() {
         <div className=" flex flex-col justify-center gap-4 sm:gap-6 xl:gap-0   bg-gradient-to-b from-blue-900 to-blue-600 py-4 sm:h-48  relative xl:flex-row  xl:px-20 xl:pb-5">
 
             <div className="w-full flex justify-center  xl:justify-start items-center xl:pt-4">
-                <img alt="logo" src={logo} className="h-8  sm:h-10 xl:h-16 w-auto"></img>
+                <img alt="logo" src={logo} className="h-8 w-auto  sm:h-10 xl:h-16 "></img>
             </div>
 
 
 
             <div className="w-full flex justify-center font-bold items-center   xl:text-[90px] xl:justify-center xl:absolute xl:h-48 xl:pb-10 z-50">
-                <p className="text-center text-white text-7xl xl:text-[90px]"> <span className="bg-gradient-to-r from-yellow-300 to-pink-500  bg-clip-text text-transparent">THE BLOG</span></p>
+                <p className="text-center text-white text-7xl xl:text-[90px]"> THE BLOG</p>
             </div>
+            <div className="w-full  -mt-0.5 xl:mt-0 flex gap-4 justify-center px-4 sm:absolute  sm:justify-start sm:top-8 xl:justify-end xl:pr-20 xl:h-48 xl:items-center xl:z-50 xl:top-2 xl:pb-5">
 
-
-            <div className="hidden sm:flex  absolute -right-6 top-20 xl:-right-10 xl:top-36 rotate-45 ">
-                <img alt="3d-form" className="w-60 h-60 xl:h-80 xl:w-80" src={niceform}></img>
-            </div>
-
-            <div className="w-full  -mt-0.5 xl:mt-0 flex gap-4 justify-end px-4 sm:absolute  sm:justify-start sm:top-8 xl:justify-end xl:pr-20 xl:h-48 xl:items-center xl:z-50 xl:top-2 xl:pb-5">
-
-                <a href="https://effective-media-agency.netlify.app/" target="_blank" alt="Effective Media Agency Homepage" rel="noreferrer">
+                <a href="https://effectivemedia.ro/" target="_blank" alt="Effective Media Agency Homepage" rel="noreferrer">
                     <HomeIcon className="h-6 w-6 sm:w-8 sm:h-8 xl:h-10 xl:w-10 text-white" />
                 </a>
 

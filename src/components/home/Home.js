@@ -160,7 +160,6 @@ export default function Home() {
 
         if (categories.length === 0) {
             if (!noFetch) {
-                console.log("test");
                 fetch(currentPage);
             } else if (noFetch && searchString !== "") {
                 searchFunction(searchString, currentPage)
@@ -186,7 +185,7 @@ export default function Home() {
         <div className="w-full relative py-2 px-2">
 
 
-            <UtilityBar searchOngoing={searchOngoing} resetSearch={resetSearch} search={search} readPost={readPost} currentPage={currentPage} categories={categories} length={length} itemsPerPage={itemsPerPage} handleChangePage={handleChangePage} handleSearch={handleSearch} handleCategories={handleCategories} />
+            <UtilityBar searchString={searchString} searchOngoing={searchOngoing} resetSearch={resetSearch} search={search} readPost={readPost} currentPage={currentPage} categories={categories} length={length} itemsPerPage={itemsPerPage} handleChangePage={handleChangePage} handleSearch={handleSearch} handleCategories={handleCategories} />
 
 
             {
